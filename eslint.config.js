@@ -1,13 +1,24 @@
 // eslint.config.js
-export default [
+module.exports = [
     {
-        files: ['**/*.js'],
+        files: ['**/*.js'], // Apply to all .js files
         languageOptions: {
-            ecmaVersion: 2021,
+            ecmaVersion: 2021, // Use ECMAScript 2021
+            sourceType: 'module', // Allow ES modules
+            globals: {
+                // Node.js globals
+                module: 'readonly',
+                require: 'readonly',
+                // Jest globals
+                describe: 'readonly',
+                test: 'readonly',
+                expect: 'readonly',
+                beforeEach: 'readonly',
+            },
         },
         rules: {
-            'no-unused-vars': 'warn',
-            'no-undef': 'error',
+            'no-unused-vars': 'warn', // Warn on unused variables
+            'no-undef': 'error', // Error on undefined variables
         },
     },
 ];
