@@ -88,7 +88,7 @@ stages:
   jobs:
   - deployment: DeployToProduction
     displayName: "Deploy to Production Environment"
-    environment: Production # Links to the Production environment in Azure DevOps
+    environment: Production 
     strategy:
       runOnce:
         deploy:
