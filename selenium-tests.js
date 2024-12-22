@@ -2,14 +2,14 @@ const { Builder, By } = require('selenium-webdriver');
 const chrome = require('selenium-webdriver/chrome');
 const path = require('path');
 
-// Chrome options for headless mode
-const options = new chrome.Options();
-options.addArguments('--headless', '--disable-gpu', '--no-sandbox', '--disable-dev-shm-usage');
-
 (async function example() {
+    // Configure ChromeDriver to run in headless mode
+    const options = new chrome.Options();
+    options.addArguments('--headless', '--no-sandbox', '--disable-dev-shm-usage');
+
     let driver = await new Builder()
         .forBrowser('chrome')
-        .setChromeOptions(options) // Apply headless options
+        .setChromeOptions(options)
         .build();
 
     try {
