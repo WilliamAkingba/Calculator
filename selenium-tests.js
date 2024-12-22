@@ -1,11 +1,14 @@
-const { Builder, By, Key, until } = require('selenium-webdriver');
+const { Builder, By } = require('selenium-webdriver'); // Removed unused imports
 const path = require('path');
+
+// Define __dirname for ES modules compatibility
+const __dirname = path.resolve();
 
 (async function example() {
     let driver = await new Builder().forBrowser('chrome').build();
     try {
         // Load the HTML file directly from the file system
-        const filePath = `file://${path.resolve(__dirname, 'test-page.html')}`;
+        const filePath = `file://${path.join(__dirname, 'test-page.html')}`;
         await driver.get(filePath);
 
         // Test Addition
