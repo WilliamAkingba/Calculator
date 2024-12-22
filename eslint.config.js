@@ -11,6 +11,7 @@ module.exports = [
                 require: 'readonly',
                 // Jest globals
                 describe: 'readonly',
+                console: 'readonly',
                 test: 'readonly',
                 expect: 'readonly',
                 beforeEach: 'readonly',
