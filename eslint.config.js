@@ -1,0 +1,13 @@
+// eslint.config.js
+export default [
+    {
+        files: ['**/*.js'],
+        languageOptions: {
+            ecmaVersion: 2021,
+        },
+        rules: {
+            'no-unused-vars': 'warn',
+            'no-undef': 'error',
+        },
+    },
+];
