@@ -13,16 +13,27 @@ steps:
       versionSpec: '18.x'
     displayName: 'Install Node.js'
 
+  # Clean the workspace
+  - script: |
+      git clean -fdx
+      git reset --hard
+    displayName: "Clean workspace"
+
   # Install Dependencies
   - script: npm install
     displayName: 'Install dependencies'
 
-  # Debug ESLint Config
+  # Debug Environment
   - script: |
-      echo "Checking ESLint Config"
+      echo "Node Version:"
+      node -v
+      echo "NPM Version:"
+      npm -v
+      echo "ESLint Config File:"
       ls -la eslint.config.js
+      echo "ESLint Config Contents:"
       cat eslint.config.js
-    displayName: "Debug ESLint Config"
+    displayName: "Debug Environment and ESLint Config"
 
   # Run ESLint
   - script: npx eslint .
