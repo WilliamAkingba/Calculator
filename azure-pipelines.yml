@@ -16,8 +16,8 @@ stages:
     displayName: "Build and Test"
     steps:
     - script: |
-        npm install
-      displayName: "Install dependencies"
+        npm install --include=dev
+      displayName: "Install dependencies (including devDependencies)"
     - script: |
         npx eslint .
       displayName: "Run ESLint (Static Code Analysis)"
