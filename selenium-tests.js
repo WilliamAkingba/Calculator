@@ -1,9 +1,7 @@
 const { Builder, By } = require('selenium-webdriver');
 const path = require('path');
 
-// Define __dirname for compatibility
-const __dirname = path.resolve();
-
+// Use the built-in __dirname for CommonJS
 (async function example() {
     let driver = await new Builder().forBrowser('chrome').build();
     try {
