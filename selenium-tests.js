@@ -1,5 +1,10 @@
-const { Builder, By } = require('selenium-webdriver'); // Removed unused imports
+const { Builder, By } = require('selenium-webdriver');
 const path = require('path');
+import { fileURLToPath } from 'url';
+
+// Define __dirname for ES Modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 (async function example() {
     let driver = await new Builder().forBrowser('chrome').build();
