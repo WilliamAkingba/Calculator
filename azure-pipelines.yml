@@ -105,12 +105,15 @@ stages:
   - job: RunUATTests
     displayName: "Run Selenium UAT Tests"
     steps:
-    # Ensure HTML file exists in the workspace
-    - script: |
-        ls -la
-      displayName: "Verify Workspace Files"
-
     # Install dependencies for Selenium
+    - script: |
+        apt-get update
+        apt-get install -y wget curl unzip
+        apt-get install -y libnss3 libgconf-2-4 libxi6 libxcursor1 libxrandr2 libasound2 libatk1.0-0 libxss1 libxtst6 fonts-liberation libappindicator3-1 xdg-utils
+        echo "All dependencies installed"
+      displayName: "Install Chrome dependencies"
+
+    # Install ChromeDriver and Selenium
     - script: |
         npm install selenium-webdriver chromedriver --save-dev
         npm list --depth=0

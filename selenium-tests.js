@@ -1,11 +1,20 @@
 const { Builder, By } = require('selenium-webdriver');
+const chrome = require('selenium-webdriver/chrome');
 const path = require('path');
 
+// Chrome options for headless mode
+const options = new chrome.Options();
+options.addArguments('--headless', '--disable-gpu', '--no-sandbox', '--disable-dev-shm-usage');
+
 (async function example() {
-    let driver = await new Builder().forBrowser('chrome').build();
+    let driver = await new Builder()
+        .forBrowser('chrome')
+        .setChromeOptions(options) // Apply headless options
+        .build();
+
     try {
         // Load the HTML file directly from the file system
-        const filePath = `file://${path.join(__dirname, 'test-page.html')}`;
+        const filePath = `file://${path.join(process.cwd(), 'test-page.html')}`;
         console.log(`Loading file from: ${filePath}`);
         await driver.get(filePath);
 
