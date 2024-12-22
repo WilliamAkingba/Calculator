@@ -29,7 +29,7 @@ stages:
 - stage: DeployToTest
   displayName: "Deploy to Test Environment"
   dependsOn: Build
-  condition: succeeded() # Only runs if Build is successful
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/development')) # Triggered only by development branch
   jobs:
   - deployment: DeployToTest
     displayName: "Deploy to Test Environment"
@@ -44,8 +44,8 @@ stages:
 # Stage 3: Deploy to Production
 - stage: DeployToProduction
   displayName: "Deploy to Production Environment"
-  dependsOn: DeployToTest
-  condition: succeeded() # Only runs if DeployToTest is successful
+  dependsOn: Build
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main')) # Triggered only by main branch
   jobs:
   - deployment: DeployToProduction
     displayName: "Deploy to Production Environment"
