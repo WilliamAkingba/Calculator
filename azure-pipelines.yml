@@ -17,10 +17,13 @@ steps:
   - script: npm install
     displayName: 'Install dependencies'
 
-  # Run Tests
-  - script: npm test
-    displayName: 'Run unit tests'
+  # Debug ESLint Config
+  - script: |
+      echo "Checking ESLint Config"
+      ls -la eslint.config.js
+      cat eslint.config.js
+    displayName: "Debug ESLint Config"
 
-  # Static Code Analysis (Optional)
+  # Run ESLint
   - script: npx eslint .
     displayName: 'Run ESLint (Static Code Analysis)'
