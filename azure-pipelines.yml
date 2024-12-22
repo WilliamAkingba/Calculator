@@ -25,7 +25,20 @@ stages:
         npm test
       displayName: "Run Unit Tests"
 
-# Stage 2: Security Testing
+# Stage 2: Performance Testing
+- stage: PerformanceTesting
+  displayName: "Performance Testing"
+  dependsOn: Build
+  condition: succeeded()
+  jobs:
+  - job: RunPerformanceTests
+    displayName: "Run Performance Tests with Benchmark.js"
+    steps:
+    - script: |
+        node benchmark.js
+      displayName: "Execute Performance Tests"
+
+# Stage 3: Security Testing
 - stage: SecurityTesting
   displayName: "Security Testing"
   dependsOn: Build
@@ -38,7 +51,7 @@ stages:
         npm audit --production
       displayName: "Execute npm audit"
 
-# Stage 3: Deploy to Test
+# Stage 4: Deploy to Test
 - stage: DeployToTest
   displayName: "Deploy to Test Environment"
   dependsOn: Build
@@ -54,7 +67,7 @@ stages:
           - script: echo "Deploying to Test Environment"
             displayName: "Deploy Application"
 
-# Stage 4: Deploy to Production
+# Stage 5: Deploy to Production
 - stage: DeployToProduction
   displayName: "Deploy to Production Environment"
   dependsOn: Build

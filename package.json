@@ -16,6 +16,7 @@
     "jest": "^29.7.0"
   },
   "dependencies": {
+    "benchmark": "^2.1.4",
     "express": "^4.21.2"
   }
 }
