@@ -7,33 +7,31 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-  # Install Node.js
-  - task: NodeTool@0
-    inputs:
-      versionSpec: '18.x'
-    displayName: 'Install Node.js'
-
-  # Clean the workspace
+  # Clean Workspace
   - script: |
+      echo "Cleaning workspace to remove any cached files..."
       git clean -fdx
       git reset --hard
     displayName: "Clean workspace"
 
+  # Install Node.js
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '18.x'
+    displayName: 'Install Node.js"
+
   # Install Dependencies
   - script: npm install
-    displayName: 'Install dependencies'
+    displayName: 'Install dependencies"
 
-  # Debug Environment
+  # Debug ESLint Configuration
   - script: |
-      echo "Node Version:"
+      echo "Checking Node.js and ESLint Config"
       node -v
-      echo "NPM Version:"
       npm -v
-      echo "ESLint Config File:"
       ls -la eslint.config.js
-      echo "ESLint Config Contents:"
       cat eslint.config.js
-    displayName: "Debug Environment and ESLint Config"
+    displayName: "Debug ESLint Configuration"
 
   # Run ESLint
   - script: npx eslint .
