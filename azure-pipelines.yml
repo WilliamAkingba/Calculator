@@ -39,8 +39,13 @@ stages:
         ls -la
       displayName: "List workspace files"
     - script: |
+        ls -la node_modules
+        ls -la node_modules/benchmark
+      displayName: "Debug node_modules and Benchmark"
+    - script: |
+        npm install benchmark
         node performance-benchmark.js
-      displayName: "Execute Performance Tests"
+      displayName: "Install Benchmark and Execute Performance Tests"
 
 # Stage 3: Security Testing
 - stage: SecurityTesting
