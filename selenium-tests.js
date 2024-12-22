@@ -1,10 +1,8 @@
 const { Builder, By } = require('selenium-webdriver');
 const path = require('path');
-import { fileURLToPath } from 'url';
 
-// Define __dirname for ES Modules
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// Define __dirname for compatibility
+const __dirname = path.resolve();
 
 (async function example() {
     let driver = await new Builder().forBrowser('chrome').build();
