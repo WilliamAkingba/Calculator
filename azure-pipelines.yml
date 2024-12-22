@@ -37,15 +37,19 @@ stages:
     steps:
     - script: |
         ls -la
-      displayName: "List workspace files"
+      displayName: "Check workspace before npm install"
+    - script: |
+        rm -rf node_modules package-lock.json
+        npm install --include=dev
+        npm list --depth=0
+      displayName: "Clean and reinstall dependencies"
     - script: |
         ls -la node_modules
         ls -la node_modules/benchmark
-      displayName: "Debug node_modules and Benchmark"
+      displayName: "Verify dependencies installation"
     - script: |
-        npm install benchmark
         node performance-benchmark.js
-      displayName: "Install Benchmark and Execute Performance Tests"
+      displayName: "Execute Performance Tests"
 
 # Stage 3: Security Testing
 - stage: SecurityTesting
