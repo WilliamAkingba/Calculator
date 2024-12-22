@@ -17,7 +17,8 @@ stages:
     steps:
     - script: |
         npm install --include=dev
-      displayName: "Install dependencies (including devDependencies)"
+        npm list --depth=0
+      displayName: "Install dependencies and list installed modules"
     - script: |
         npx eslint .
       displayName: "Run ESLint (Static Code Analysis)"
@@ -34,6 +35,9 @@ stages:
   - job: RunPerformanceTests
     displayName: "Run Performance Tests with Benchmark.js"
     steps:
+    - script: |
+        ls -la
+      displayName: "List workspace files"
     - script: |
         node performance-benchmark.js
       displayName: "Execute Performance Tests"
