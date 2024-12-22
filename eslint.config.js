@@ -13,6 +13,7 @@ module.exports = [
                 describe: 'readonly',
                 console: 'readonly',
                 test: 'readonly',
+                __dirname: 'readonly',
                 expect: 'readonly',
                 beforeEach: 'readonly',
             },
