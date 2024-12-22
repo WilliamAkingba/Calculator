@@ -106,8 +106,8 @@ stages:
     displayName: "Run Selenium UAT Tests"
     steps:
     - script: |
-        npm install selenium-webdriver chromedriver --save-dev
-      displayName: "Install Selenium and WebDriver Dependencies"
+        npm install selenium-webdriver
+      displayName: "Install Selenium Dependencies"
     - script: |
         node selenium-tests.js
       displayName: "Execute Selenium Tests"
