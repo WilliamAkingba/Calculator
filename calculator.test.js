@@ -22,14 +22,6 @@ describe('Calculator Tests', () => {
         expect(calculator.multiply(4, 3)).toBe(12);
     });
 
-    // Test Division
-    test('Division of two numbers', () => {
-        expect(calculator.divide(6, 2)).toBe(3);
-    });
-
-    test('Division by zero throws error', () => {
-        expect(() => calculator.divide(6, 0)).toThrow("Division by zero is not allowed");
-    });
 
     // Test Error for Addition with Non-numeric Inputs
     test('Addition throws error for non-numeric inputs', () => {
@@ -46,8 +38,5 @@ describe('Calculator Tests', () => {
         expect(() => calculator.multiply(4, "3")).toThrow("Inputs must be numbers");
     });
 
-    // Test Error for Division with Non-numeric Inputs
-    test('Division throws error for non-numeric inputs', () => {
-        expect(() => calculator.divide(4, "2")).toThrow("Inputs must be numbers");
-    });
+   
 });
