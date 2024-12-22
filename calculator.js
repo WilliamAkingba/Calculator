@@ -1,4 +1,3 @@
-// calculator.js
 class Calculator {
     add(a, b) {
         if (typeof a !== 'number' || typeof b !== 'number') {
@@ -20,6 +19,7 @@ class Calculator {
         }
         return a * b;
     }
+
     divide(a, b) {
         if (typeof a !== 'number' || typeof b !== 'number') {
             throw new Error("Inputs must be numbers");
@@ -29,8 +29,6 @@ class Calculator {
         }
         return a / b;
     }
-
 }
-
 
 module.exports = Calculator;
