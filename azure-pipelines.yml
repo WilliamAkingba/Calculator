@@ -18,11 +18,11 @@ steps:
   - task: NodeTool@0
     inputs:
       versionSpec: '18.x'
-    displayName: 'Install Node.js"
+    displayName: "Install Node.js"
 
   # Install Dependencies
   - script: npm install
-    displayName: 'Install dependencies"
+    displayName: "Install dependencies"
 
   # Debug ESLint Configuration
   - script: |
@@ -35,4 +35,4 @@ steps:
 
   # Run ESLint
   - script: npx eslint .
-    displayName: 'Run ESLint (Static Code Analysis)'
+    displayName: "Run ESLint (Static Code Analysis)"
