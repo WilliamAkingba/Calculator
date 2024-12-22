@@ -35,7 +35,7 @@ stages:
     displayName: "Run Performance Tests with Benchmark.js"
     steps:
     - script: |
-        node benchmark.js
+        node performance-benchmark.js
       displayName: "Execute Performance Tests"
 
 # Stage 3: Security Testing
